@@ -18,7 +18,6 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
     private let manager = CLLocationManager()
     private var uuid: UUID?
 
-    // Settings
     private let offlineTimeout: TimeInterval = 3.0
 
     // LIVE RSSI
@@ -30,18 +29,20 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var secondsLeft = 0
     @Published var windowMedians: [BeaconID: Int] = [:]
 
+    // Exposed capture stats for UI
+    @Published private(set) var captureSampleCounts: [BeaconID: Int] = [:]
+    @Published private(set) var discarded: Set<BeaconID> = []
+
     private var lastSeen: [BeaconID: Date] = [:]
     private var cleanupTimer: Timer?
 
     private var captureTimer: Timer?
     private var windowSamples: [BeaconID: [Int]] = [:]
-    private var discardedInWindow: Set<BeaconID> = []
 
     override init() {
         super.init()
         manager.delegate = self
 
-        // Prune offline beacons once per second
         cleanupTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.pruneOfflineBeacons()
         }
@@ -67,12 +68,13 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
         live = [:]
         lastSeen = [:]
 
-        // Clear previous capture results
+        // Clear capture state
         isCapturing = false
         secondsLeft = 0
         windowMedians = [:]
         windowSamples = [:]
-        discardedInWindow = []
+        discarded = []
+        captureSampleCounts = [:]
 
         manager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: u))
     }
@@ -88,6 +90,10 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
         lastSeen = [:]
 
         stopCaptureInternal(clearStatus: false)
+        windowSamples = [:]
+        windowMedians = [:]
+        discarded = []
+        captureSampleCounts = [:]
     }
 
     // MARK: - Capture
@@ -95,12 +101,12 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
     func startCapture(windowSeconds: Int) {
         guard uuid != nil else { status = "Start ranging first"; return }
 
-        // Reset capture state
         isCapturing = true
         secondsLeft = windowSeconds
         windowSamples = [:]
         windowMedians = [:]
-        discardedInWindow = []
+        discarded = []
+        captureSampleCounts = [:]
         status = "Capturing..."
 
         captureTimer?.invalidate()
@@ -121,9 +127,7 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
     private func stopCaptureInternal(clearStatus: Bool) {
         captureTimer?.invalidate()
         captureTimer = nil
-        if isCapturing, clearStatus {
-            status = "Capture stopped"
-        }
+        if isCapturing, clearStatus { status = "Capture stopped" }
         isCapturing = false
         secondsLeft = 0
     }
@@ -132,13 +136,10 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
         isCapturing = false
         status = "Capture complete"
 
-        // Compute medians for beacons that were NOT discarded
         var meds: [BeaconID: Int] = [:]
         for (id, vals) in windowSamples {
-            guard !discardedInWindow.contains(id) else { continue }
-            if let med = median(vals) {
-                meds[id] = med
-            }
+            guard !discarded.contains(id) else { continue }
+            if let med = median(vals) { meds[id] = med }
         }
         windowMedians = meds
     }
@@ -151,15 +152,15 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
 
         for (id, seenTime) in lastSeen {
             if now.timeIntervalSince(seenTime) > offlineTimeout {
-                // Remove from live view
                 lastSeen.removeValue(forKey: id)
                 live.removeValue(forKey: id)
                 removedAny = true
 
-                // If capturing, DISCARD this beacon entirely for this window (your choice 2=B)
+                // If capturing: DISCARD ENTIRELY
                 if isCapturing {
-                    discardedInWindow.insert(id)
-                    windowSamples.removeValue(forKey: id) // drop all samples too
+                    discarded.insert(id)
+                    windowSamples.removeValue(forKey: id)
+                    captureSampleCounts[id] = 0
                 }
             }
         }
@@ -167,6 +168,12 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
         if removedAny, uuid != nil, live.isEmpty, status.hasPrefix("Ranging") {
             status = "Ranging... (no beacons)"
         }
+    }
+
+    // MARK: - Helpers for UI
+
+    func isBeaconDiscarded(_ id: BeaconID) -> Bool {
+        discarded.contains(id)
     }
 
     // MARK: - CLLocationManagerDelegate
@@ -179,14 +186,12 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
 
         for b in beacons where b.rssi != 0 {
             let id = BeaconID(major: b.major.intValue, minor: b.minor.intValue)
-
-            // Update live
             live[id] = b.rssi
             lastSeen[id] = now
 
-            // During capture, only collect if NOT discarded
-            if isCapturing && !discardedInWindow.contains(id) {
+            if isCapturing && !discarded.contains(id) {
                 windowSamples[id, default: []].append(b.rssi)
+                captureSampleCounts[id] = (windowSamples[id]?.count ?? 0)
             }
         }
 

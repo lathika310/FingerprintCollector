@@ -4,15 +4,11 @@ struct ContentView: View {
     @StateObject private var ranger = BeaconRanger()
     @State private var uuidString = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
 
-    private var sortedLiveKeys: [BeaconID] {
-        Array(ranger.live.keys).sorted { a, b in
-            if a.major != b.major { return a.major < b.major }
-            return a.minor < b.minor
-        }
-    }
-
-    private var sortedMedianKeys: [BeaconID] {
-        Array(ranger.windowMedians.keys).sorted { a, b in
+    private var allKnownKeysSorted: [BeaconID] {
+        let all = Set(ranger.live.keys)
+            .union(ranger.captureSampleCounts.keys)
+            .union(ranger.windowMedians.keys)
+        return Array(all).sorted { a, b in
             if a.major != b.major { return a.major < b.major }
             return a.minor < b.minor
         }
@@ -47,29 +43,50 @@ struct ContentView: View {
 
             Divider()
 
-            Text("Live RSSI (latest):").font(.subheadline)
-            List {
-                ForEach(sortedLiveKeys, id: \.self) { k in
-                    HStack {
-                        Text("M\(k.major) m\(k.minor)")
-                        Spacer()
-                        Text("\(ranger.live[k] ?? 0) dBm")
-                    }
-                }
-            }
-            .frame(maxHeight: 220)
+            Text("Beacon Stats").font(.subheadline)
 
-            Text("Window Medians (offline beacons discarded):").font(.subheadline)
             List {
-                ForEach(sortedMedianKeys, id: \.self) { k in
+                ForEach(allKnownKeysSorted, id: \.self) { k in
+                    let liveRssi = ranger.live[k]
+                    let count = ranger.captureSampleCounts[k] ?? 0
+                    let med = ranger.windowMedians[k]
+                    let discarded = ranger.isBeaconDiscarded(k)
+
                     HStack {
-                        Text("M\(k.major) m\(k.minor)")
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("M\(k.major) m\(k.minor)")
+                                .fontWeight(.semibold)
+
+                            if discarded {
+                                Text("DISCARDED (offline > 3s)")
+                                    .font(.caption)
+                                    .foregroundStyle(.red)
+                            } else if ranger.isCapturing {
+                                Text("samples: \(count)")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            } else if let med {
+                                Text("median: \(med) dBm (n=\(count == 0 ? (ranger.captureSampleCounts[k] ?? 0) : count))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+
                         Spacer()
-                        Text("\(ranger.windowMedians[k] ?? 0) dBm (median)")
+
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text(liveRssi != nil ? "\(liveRssi!) dBm" : "—")
+                                .foregroundStyle(liveRssi != nil ? .primary : .secondary)
+
+                            if let med {
+                                Text("med \(med)")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
                     }
                 }
             }
-            .frame(maxHeight: 220)
         }
         .padding()
     }

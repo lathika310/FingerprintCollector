@@ -1,10 +1,37 @@
 import SwiftUI
 
+struct FingerprintRecord: Identifiable {
+    let id = UUID()
+    let timestamp: Date
+    let floor: Int
+    let label: String
+    let uuid: String
+    let major: Int
+    let minor: Int
+    let rssi: Int
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+    func updateUIViewController(_ vc: UIActivityViewController, context: Context) {}
+}
+
 struct ContentView: View {
     @StateObject private var ranger = BeaconRanger()
 
     @State private var uuidString = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
     @State private var floor: Int = 1
+
+    // New: user label + session records
+    @State private var pointLabel: String = "P1"
+    @State private var records: [FingerprintRecord] = []
+
+    // New: export UI
+    @State private var exportURL: URL?
+    @State private var showingShare = false
 
     private var allKnownKeysSorted: [BeaconID] {
         let all = Set(ranger.live.keys)
@@ -30,6 +57,10 @@ struct ContentView: View {
                 .textInputAutocapitalization(.characters)
                 .textFieldStyle(.roundedBorder)
 
+            // New: Point label
+            TextField("Point Label (e.g., P12)", text: $pointLabel)
+                .textFieldStyle(.roundedBorder)
+
             // Beacon controls
             HStack {
                 Button("Request Permission") { ranger.requestPermission() }
@@ -37,7 +68,7 @@ struct ContentView: View {
                 Button("Stop") { ranger.stopRanging() }
             }
 
-            // Capture controls
+            // Capture controls (your existing 15s median capture)
             HStack {
                 Button(ranger.isCapturing ? "Capturing \(ranger.secondsLeft)s" : "Capture 15s") {
                     ranger.startCapture(windowSeconds: 15)
@@ -49,7 +80,26 @@ struct ContentView: View {
                     .disabled(!ranger.isCapturing)
             }
 
-            Text(ranger.status).foregroundStyle(.secondary)
+            // New: Snapshot + Export controls
+            HStack {
+                Button("Capture Snapshot") {
+                    captureSnapshot()
+                }
+                .disabled(ranger.live.isEmpty)
+
+                Button("Export CSV") {
+                    exportCSV()
+                }
+                .disabled(records.isEmpty)
+
+                Button("Clear Session") {
+                    records.removeAll()
+                }
+                .disabled(records.isEmpty)
+            }
+
+            Text("\(ranger.status)  •  session rows: \(records.count)")
+                .foregroundStyle(.secondary)
 
             Divider()
 
@@ -91,6 +141,69 @@ struct ContentView: View {
             }
         }
         .padding()
+        .sheet(isPresented: $showingShare) {
+            if let exportURL {
+                ShareSheet(items: [exportURL])
+            }
+        }
+    }
+
+    // MARK: - Snapshot capture (one row per visible beacon)
+
+    private func captureSnapshot() {
+        let now = Date()
+
+        // Take a snapshot of current live RSSI table
+        for (id, rssi) in ranger.live {
+            records.append(
+                FingerprintRecord(
+                    timestamp: now,
+                    floor: floor,
+                    label: pointLabel.trimmingCharacters(in: .whitespacesAndNewlines),
+                    uuid: uuidString,
+                    major: id.major,
+                    minor: id.minor,
+                    rssi: rssi
+                )
+            )
+        }
+    }
+
+    // MARK: - CSV export
+
+    private func exportCSV() {
+        do {
+            let csv = makeCSV(records)
+            let url = try writeCSVToTempFile(csv: csv)
+            exportURL = url
+            showingShare = true
+        } catch {
+            print("Export failed:", error)
+        }
+    }
+
+    private func makeCSV(_ records: [FingerprintRecord]) -> String {
+        var lines: [String] = []
+        lines.append("timestamp,floor,label,uuid,major,minor,rssi")
+
+        let iso = ISO8601DateFormatter()
+        for r in records {
+            let ts = iso.string(from: r.timestamp)
+            let safeLabel = r.label.replacingOccurrences(of: ",", with: "_")
+            let safeUUID = r.uuid.replacingOccurrences(of: ",", with: "_")
+            lines.append("\(ts),\(r.floor),\(safeLabel),\(safeUUID),\(r.major),\(r.minor),\(r.rssi)")
+        }
+        return lines.joined(separator: "\n")
+    }
+
+    private func writeCSVToTempFile(csv: String) throws -> URL {
+        let filename = "fingerprints-\(Int(Date().timeIntervalSince1970)).csv"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(filename)
+        guard let data = csv.data(using: .utf8) else {
+            throw NSError(domain: "CSV", code: 1, userInfo: [NSLocalizedDescriptionKey: "UTF-8 encode failed"])
+        }
+        try data.write(to: url, options: .atomic)
+        return url
     }
 }
 

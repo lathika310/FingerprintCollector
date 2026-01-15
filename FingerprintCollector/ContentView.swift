@@ -2,7 +2,9 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var ranger = BeaconRanger()
+
     @State private var uuidString = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+    @State private var floor: Int = 1
 
     private var allKnownKeysSorted: [BeaconID] {
         let all = Set(ranger.live.keys)
@@ -16,18 +18,26 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("iBeacon Fingerprint Capture").font(.headline)
+            Text("Fingerprint Collector").font(.headline)
 
+            // Floor input
+            Stepper(value: $floor, in: 0...20) {
+                Text("Floor: \(floor)")
+            }
+
+            // Beacon UUID
             TextField("Beacon UUID", text: $uuidString)
                 .textInputAutocapitalization(.characters)
                 .textFieldStyle(.roundedBorder)
 
+            // Beacon controls
             HStack {
                 Button("Request Permission") { ranger.requestPermission() }
                 Button("Start") { ranger.startRanging(uuidString: uuidString) }
                 Button("Stop") { ranger.stopRanging() }
             }
 
+            // Capture controls
             HStack {
                 Button(ranger.isCapturing ? "Capturing \(ranger.secondsLeft)s" : "Capture 15s") {
                     ranger.startCapture(windowSeconds: 15)
@@ -50,14 +60,14 @@ struct ContentView: View {
                     let liveRssi = ranger.live[k]
                     let count = ranger.captureSampleCounts[k] ?? 0
                     let med = ranger.windowMedians[k]
-                    let discarded = ranger.isBeaconDiscarded(k)
+                    let isDiscarded = ranger.isBeaconDiscarded(k)
 
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("M\(k.major) m\(k.minor)")
                                 .fontWeight(.semibold)
 
-                            if discarded {
+                            if isDiscarded {
                                 Text("DISCARDED (offline > 3s)")
                                     .font(.caption)
                                     .foregroundStyle(.red)
@@ -66,7 +76,7 @@ struct ContentView: View {
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             } else if let med {
-                                Text("median: \(med) dBm (n=\(count == 0 ? (ranger.captureSampleCounts[k] ?? 0) : count))")
+                                Text("median: \(med) dBm")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -74,16 +84,8 @@ struct ContentView: View {
 
                         Spacer()
 
-                        VStack(alignment: .trailing, spacing: 4) {
-                            Text(liveRssi != nil ? "\(liveRssi!) dBm" : "—")
-                                .foregroundStyle(liveRssi != nil ? .primary : .secondary)
-
-                            if let med {
-                                Text("med \(med)")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
+                        Text(liveRssi != nil ? "\(liveRssi!) dBm" : "—")
+                            .foregroundStyle(liveRssi != nil ? .primary : .secondary)
                     }
                 }
             }

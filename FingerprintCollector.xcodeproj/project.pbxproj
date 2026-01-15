@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50ADC8452F16E7E2003311BD /* SensorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADC8442F16E7E2003311BD /* SensorLogger.swift */; };
 		50FF57612F15C83D00A96798 /* BeaconRanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF57602F15C83D00A96798 /* BeaconRanger.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50ADC8442F16E7E2003311BD /* SensorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLogger.swift; sourceTree = "<group>"; };
 		50FF57332F15C3F800A96798 /* FingerprintCollector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerprintCollector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FF57432F15C3FC00A96798 /* FingerprintCollectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintCollectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FF574D2F15C3FD00A96798 /* FingerprintCollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintCollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +82,7 @@
 		50FF572A2F15C3F800A96798 = {
 			isa = PBXGroup;
 			children = (
+				50ADC8442F16E7E2003311BD /* SensorLogger.swift */,
 				50FF57602F15C83D00A96798 /* BeaconRanger.swift */,
 				50FF57352F15C3F800A96798 /* FingerprintCollector */,
 				50FF57462F15C3FC00A96798 /* FingerprintCollectorTests */,
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50FF57612F15C83D00A96798 /* BeaconRanger.swift in Sources */,
+				50ADC8452F16E7E2003311BD /* SensorLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

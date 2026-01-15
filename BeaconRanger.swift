@@ -43,6 +43,7 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
         super.init()
         manager.delegate = self
 
+        // Prune offline beacons once per second
         cleanupTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.pruneOfflineBeacons()
         }
@@ -169,8 +170,6 @@ final class BeaconRanger: NSObject, ObservableObject, CLLocationManagerDelegate 
             status = "Ranging... (no beacons)"
         }
     }
-
-    // MARK: - Helpers for UI
 
     func isBeaconDiscarded(_ id: BeaconID) -> Bool {
         discarded.contains(id)

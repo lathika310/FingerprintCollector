@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		505186622F3FF9F8005003CB /* LiveKNNRegressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186602F3FF9F8005003CB /* LiveKNNRegressor.swift */; };
+		505186632F3FF9F8005003CB /* FingerprintDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051865C2F3FF9F8005003CB /* FingerprintDatabase.swift */; };
+		505186642F3FF9F8005003CB /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051865A2F3FF9F8005003CB /* AppModels.swift */; };
+		505186652F3FF9F8005003CB /* FloorPlanEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051865D2F3FF9F8005003CB /* FloorPlanEditorView.swift */; };
+		505186662F3FF9F8005003CB /* FloorPlanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051865E2F3FF9F8005003CB /* FloorPlanModels.swift */; };
+		505186672F3FF9F8005003CB /* FloorPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051865F2F3FF9F8005003CB /* FloorPlanStore.swift */; };
+		505186682F3FF9F8005003CB /* RegressionLiveMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186612F3FF9F8005003CB /* RegressionLiveMapView.swift */; };
+		505186692F3FF9F8005003CB /* FingerprintCollectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051865B2F3FF9F8005003CB /* FingerprintCollectorView.swift */; };
 		50A0B1F22F1ADC5300E44599 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 50A0B1F12F1ADC4200E44599 /* .gitignore */; };
 		50ADC8452F16E7E2003311BD /* SensorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADC8442F16E7E2003311BD /* SensorLogger.swift */; };
 		50FF57612F15C83D00A96798 /* BeaconRanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF57602F15C83D00A96798 /* BeaconRanger.swift */; };
@@ -30,11 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		505186482F3FF924005003CB /* FingerprintCollector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerprintCollector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		505186492F3FF924005003CB /* FingerprintCollectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintCollectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5051864A2F3FF924005003CB /* FingerprintCollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintCollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5051865A2F3FF9F8005003CB /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
+		5051865B2F3FF9F8005003CB /* FingerprintCollectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintCollectorView.swift; sourceTree = "<group>"; };
+		5051865C2F3FF9F8005003CB /* FingerprintDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintDatabase.swift; sourceTree = "<group>"; };
+		5051865D2F3FF9F8005003CB /* FloorPlanEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanEditorView.swift; sourceTree = "<group>"; };
+		5051865E2F3FF9F8005003CB /* FloorPlanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanModels.swift; sourceTree = "<group>"; };
+		5051865F2F3FF9F8005003CB /* FloorPlanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanStore.swift; sourceTree = "<group>"; };
+		505186602F3FF9F8005003CB /* LiveKNNRegressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveKNNRegressor.swift; sourceTree = "<group>"; };
+		505186612F3FF9F8005003CB /* RegressionLiveMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegressionLiveMapView.swift; sourceTree = "<group>"; };
 		50A0B1F12F1ADC4200E44599 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		50ADC8442F16E7E2003311BD /* SensorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLogger.swift; sourceTree = "<group>"; };
-		50FF57332F15C3F800A96798 /* FingerprintCollector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FingerprintCollector.app; path = "/Users/Lathika/Library/CloudStorage/OneDrive-TorontoMetropolitanUniversity(TMU)/myFiles/School/courses/W2026/COE70B/Fingerprinting App/FingerprintCollector/build/Debug-iphoneos/FingerprintCollector.app"; sourceTree = "<absolute>"; };
-		50FF57432F15C3FC00A96798 /* FingerprintCollectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FingerprintCollectorTests.xctest; path = "/Users/Lathika/Library/CloudStorage/OneDrive-TorontoMetropolitanUniversity(TMU)/myFiles/School/courses/W2026/COE70B/Fingerprinting App/FingerprintCollector/build/Debug-iphoneos/FingerprintCollector.app/PlugIns/FingerprintCollectorTests.xctest"; sourceTree = "<absolute>"; };
-		50FF574D2F15C3FD00A96798 /* FingerprintCollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FingerprintCollectorUITests.xctest; path = "/Users/Lathika/Library/CloudStorage/OneDrive-TorontoMetropolitanUniversity(TMU)/myFiles/School/courses/W2026/COE70B/Fingerprinting App/FingerprintCollector/build/Debug-iphoneos/FingerprintCollectorUITests-Runner.app/PlugIns/FingerprintCollectorUITests.xctest"; sourceTree = "<absolute>"; };
 		50FF57602F15C83D00A96798 /* BeaconRanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRanger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,12 +100,23 @@
 		50FF572A2F15C3F800A96798 = {
 			isa = PBXGroup;
 			children = (
+				5051865A2F3FF9F8005003CB /* AppModels.swift */,
+				5051865B2F3FF9F8005003CB /* FingerprintCollectorView.swift */,
+				5051865C2F3FF9F8005003CB /* FingerprintDatabase.swift */,
+				5051865D2F3FF9F8005003CB /* FloorPlanEditorView.swift */,
+				5051865E2F3FF9F8005003CB /* FloorPlanModels.swift */,
+				5051865F2F3FF9F8005003CB /* FloorPlanStore.swift */,
+				505186602F3FF9F8005003CB /* LiveKNNRegressor.swift */,
+				505186612F3FF9F8005003CB /* RegressionLiveMapView.swift */,
 				50ADC8442F16E7E2003311BD /* SensorLogger.swift */,
 				50FF57602F15C83D00A96798 /* BeaconRanger.swift */,
 				50FF57352F15C3F800A96798 /* FingerprintCollector */,
 				50FF57462F15C3FC00A96798 /* FingerprintCollectorTests */,
 				50FF57502F15C3FD00A96798 /* FingerprintCollectorUITests */,
 				50A0B1F12F1ADC4200E44599 /* .gitignore */,
+				505186482F3FF924005003CB /* FingerprintCollector.app */,
+				505186492F3FF924005003CB /* FingerprintCollectorTests.xctest */,
+				5051864A2F3FF924005003CB /* FingerprintCollectorUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,7 +142,7 @@
 			packageProductDependencies = (
 			);
 			productName = FingerprintCollector;
-			productReference = 50FF57332F15C3F800A96798 /* FingerprintCollector.app */;
+			productReference = 505186482F3FF924005003CB /* FingerprintCollector.app */;
 			productType = "com.apple.product-type.application";
 		};
 		50FF57422F15C3FC00A96798 /* FingerprintCollectorTests */ = {
@@ -138,7 +165,7 @@
 			packageProductDependencies = (
 			);
 			productName = FingerprintCollectorTests;
-			productReference = 50FF57432F15C3FC00A96798 /* FingerprintCollectorTests.xctest */;
+			productReference = 505186492F3FF924005003CB /* FingerprintCollectorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		50FF574C2F15C3FD00A96798 /* FingerprintCollectorUITests */ = {
@@ -161,7 +188,7 @@
 			packageProductDependencies = (
 			);
 			productName = FingerprintCollectorUITests;
-			productReference = 50FF574D2F15C3FD00A96798 /* FingerprintCollectorUITests.xctest */;
+			productReference = 5051864A2F3FF924005003CB /* FingerprintCollectorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -238,6 +265,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505186622F3FF9F8005003CB /* LiveKNNRegressor.swift in Sources */,
+				505186632F3FF9F8005003CB /* FingerprintDatabase.swift in Sources */,
+				505186642F3FF9F8005003CB /* AppModels.swift in Sources */,
+				505186652F3FF9F8005003CB /* FloorPlanEditorView.swift in Sources */,
+				505186662F3FF9F8005003CB /* FloorPlanModels.swift in Sources */,
+				505186672F3FF9F8005003CB /* FloorPlanStore.swift in Sources */,
+				505186682F3FF9F8005003CB /* RegressionLiveMapView.swift in Sources */,
+				505186692F3FF9F8005003CB /* FingerprintCollectorView.swift in Sources */,
 				50FF57612F15C83D00A96798 /* BeaconRanger.swift in Sources */,
 				50ADC8452F16E7E2003311BD /* SensorLogger.swift in Sources */,
 			);

@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		505186392F3FF372005003CB /* FloorPlanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186382F3FF372005003CB /* FloorPlanModels.swift */; };
+		5051863B2F3FF387005003CB /* FloorPlanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051863A2F3FF387005003CB /* FloorPlanStore.swift */; };
+		5051863D2F3FF395005003CB /* FloorPlanEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051863C2F3FF395005003CB /* FloorPlanEditorView.swift */; };
+		5051863F2F3FF3BF005003CB /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051863E2F3FF3BF005003CB /* AppModels.swift */; };
+		505186412F3FF3DC005003CB /* FingerprintDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186402F3FF3DC005003CB /* FingerprintDatabase.swift */; };
+		505186432F3FF410005003CB /* FingerprintCollectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186422F3FF410005003CB /* FingerprintCollectorView.swift */; };
+		505186452F3FF424005003CB /* LiveKNNRegressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186442F3FF424005003CB /* LiveKNNRegressor.swift */; };
+		505186472F3FF439005003CB /* RegressionLiveMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505186462F3FF439005003CB /* RegressionLiveMapView.swift */; };
+		50A0B1F22F1ADC5300E44599 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 50A0B1F12F1ADC4200E44599 /* .gitignore */; };
+		50ADC8452F16E7E2003311BD /* SensorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADC8442F16E7E2003311BD /* SensorLogger.swift */; };
+		50FF57612F15C83D00A96798 /* BeaconRanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF57602F15C83D00A96798 /* BeaconRanger.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50FF57442F15C3FC00A96798 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50FF572B2F15C3F800A96798 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50FF57322F15C3F800A96798;
+			remoteInfo = FingerprintCollector;
+		};
+		50FF574E2F15C3FD00A96798 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50FF572B2F15C3F800A96798 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50FF57322F15C3F800A96798;
+			remoteInfo = FingerprintCollector;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		505186242F3FF07F005003CB /* FingerprintCollector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerprintCollector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		505186252F3FF07F005003CB /* FingerprintCollectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintCollectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		505186262F3FF07F005003CB /* FingerprintCollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintCollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		505186382F3FF372005003CB /* FloorPlanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanModels.swift; sourceTree = "<group>"; };
+		5051863A2F3FF387005003CB /* FloorPlanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanStore.swift; sourceTree = "<group>"; };
+		5051863C2F3FF395005003CB /* FloorPlanEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanEditorView.swift; sourceTree = "<group>"; };
+		5051863E2F3FF3BF005003CB /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
+		505186402F3FF3DC005003CB /* FingerprintDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintDatabase.swift; sourceTree = "<group>"; };
+		505186422F3FF410005003CB /* FingerprintCollectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintCollectorView.swift; sourceTree = "<group>"; };
+		505186442F3FF424005003CB /* LiveKNNRegressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveKNNRegressor.swift; sourceTree = "<group>"; };
+		505186462F3FF439005003CB /* RegressionLiveMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegressionLiveMapView.swift; sourceTree = "<group>"; };
+		50A0B1F12F1ADC4200E44599 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		50ADC8442F16E7E2003311BD /* SensorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLogger.swift; sourceTree = "<group>"; };
+		50FF57602F15C83D00A96798 /* BeaconRanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRanger.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		50FF57352F15C3F800A96798 /* FingerprintCollector */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FingerprintCollector;
+			sourceTree = "<group>";
+		};
+		50FF57462F15C3FC00A96798 /* FingerprintCollectorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FingerprintCollectorTests;
+			sourceTree = "<group>";
+		};
+		50FF57502F15C3FD00A96798 /* FingerprintCollectorUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FingerprintCollectorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50FF57302F15C3F800A96798 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50FF57402F15C3FC00A96798 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50FF574A2F15C3FD00A96798 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50FF572A2F15C3F800A96798 = {
+			isa = PBXGroup;
+			children = (
+				505186462F3FF439005003CB /* RegressionLiveMapView.swift */,
+				505186442F3FF424005003CB /* LiveKNNRegressor.swift */,
+				505186422F3FF410005003CB /* FingerprintCollectorView.swift */,
+				505186402F3FF3DC005003CB /* FingerprintDatabase.swift */,
+				5051863E2F3FF3BF005003CB /* AppModels.swift */,
+				5051863C2F3FF395005003CB /* FloorPlanEditorView.swift */,
+				5051863A2F3FF387005003CB /* FloorPlanStore.swift */,
+				505186382F3FF372005003CB /* FloorPlanModels.swift */,
+				50ADC8442F16E7E2003311BD /* SensorLogger.swift */,
+				50FF57602F15C83D00A96798 /* BeaconRanger.swift */,
+				50FF57352F15C3F800A96798 /* FingerprintCollector */,
+				50FF57462F15C3FC00A96798 /* FingerprintCollectorTests */,
+				50FF57502F15C3FD00A96798 /* FingerprintCollectorUITests */,
+				50A0B1F12F1ADC4200E44599 /* .gitignore */,
+				505186242F3FF07F005003CB /* FingerprintCollector.app */,
+				505186252F3FF07F005003CB /* FingerprintCollectorTests.xctest */,
+				505186262F3FF07F005003CB /* FingerprintCollectorUITests.xctest */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50FF57322F15C3F800A96798 /* FingerprintCollector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50FF57572F15C3FD00A96798 /* Build configuration list for PBXNativeTarget "FingerprintCollector" */;
+			buildPhases = (
+				50FF572F2F15C3F800A96798 /* Sources */,
+				50FF57302F15C3F800A96798 /* Frameworks */,
+				50FF57312F15C3F800A96798 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				50FF57352F15C3F800A96798 /* FingerprintCollector */,
+			);
+			name = FingerprintCollector;
+			packageProductDependencies = (
+			);
+			productName = FingerprintCollector;
+			productReference = 505186242F3FF07F005003CB /* FingerprintCollector.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50FF57422F15C3FC00A96798 /* FingerprintCollectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50FF575A2F15C3FD00A96798 /* Build configuration list for PBXNativeTarget "FingerprintCollectorTests" */;
+			buildPhases = (
+				50FF573F2F15C3FC00A96798 /* Sources */,
+				50FF57402F15C3FC00A96798 /* Frameworks */,
+				50FF57412F15C3FC00A96798 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50FF57452F15C3FC00A96798 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				50FF57462F15C3FC00A96798 /* FingerprintCollectorTests */,
+			);
+			name = FingerprintCollectorTests;
+			packageProductDependencies = (
+			);
+			productName = FingerprintCollectorTests;
+			productReference = 505186252F3FF07F005003CB /* FingerprintCollectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		50FF574C2F15C3FD00A96798 /* FingerprintCollectorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50FF575D2F15C3FD00A96798 /* Build configuration list for PBXNativeTarget "FingerprintCollectorUITests" */;
+			buildPhases = (
+				50FF57492F15C3FD00A96798 /* Sources */,
+				50FF574A2F15C3FD00A96798 /* Frameworks */,
+				50FF574B2F15C3FD00A96798 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50FF574F2F15C3FD00A96798 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				50FF57502F15C3FD00A96798 /* FingerprintCollectorUITests */,
+			);
+			name = FingerprintCollectorUITests;
+			packageProductDependencies = (
+			);
+			productName = FingerprintCollectorUITests;
+			productReference = 505186262F3FF07F005003CB /* FingerprintCollectorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50FF572B2F15C3F800A96798 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					50FF57322F15C3F800A96798 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					50FF57422F15C3FC00A96798 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 50FF57322F15C3F800A96798;
+					};
+					50FF574C2F15C3FD00A96798 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 50FF57322F15C3F800A96798;
+					};
+				};
+			};
+			buildConfigurationList = 50FF572E2F15C3F800A96798 /* Build configuration list for PBXProject "FingerprintCollector" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 50FF572A2F15C3F800A96798;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 50FF572A2F15C3F800A96798;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50FF57322F15C3F800A96798 /* FingerprintCollector */,
+				50FF57422F15C3FC00A96798 /* FingerprintCollectorTests */,
+				50FF574C2F15C3FD00A96798 /* FingerprintCollectorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50FF57312F15C3F800A96798 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50A0B1F22F1ADC5300E44599 /* .gitignore in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50FF57412F15C3FC00A96798 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50FF574B2F15C3FD00A96798 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50FF572F2F15C3F800A96798 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				505186432F3FF410005003CB /* FingerprintCollectorView.swift in Sources */,
+				50FF57612F15C83D00A96798 /* BeaconRanger.swift in Sources */,
+				505186472F3FF439005003CB /* RegressionLiveMapView.swift in Sources */,
+				50ADC8452F16E7E2003311BD /* SensorLogger.swift in Sources */,
+				505186412F3FF3DC005003CB /* FingerprintDatabase.swift in Sources */,
+				505186392F3FF372005003CB /* FloorPlanModels.swift in Sources */,
+				5051863B2F3FF387005003CB /* FloorPlanStore.swift in Sources */,
+				505186452F3FF424005003CB /* LiveKNNRegressor.swift in Sources */,
+				5051863D2F3FF395005003CB /* FloorPlanEditorView.swift in Sources */,
+				5051863F2F3FF3BF005003CB /* AppModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50FF573F2F15C3FC00A96798 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50FF57492F15C3FD00A96798 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50FF57452F15C3FC00A96798 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50FF57322F15C3F800A96798 /* FingerprintCollector */;
+			targetProxy = 50FF57442F15C3FC00A96798 /* PBXContainerItemProxy */;
+		};
+		50FF574F2F15C3FD00A96798 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50FF57322F15C3F800A96798 /* FingerprintCollector */;
+			targetProxy = 50FF574E2F15C3FD00A96798 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		50FF57552F15C3FD00A96798 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		50FF57562F15C3FD00A96798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		50FF57582F15C3FD00A96798 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FingerprintCollector/Preview Content\"";
+				DEVELOPMENT_TEAM = 9STJAB52XN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses location to detect nearby beacons for indoor positioning.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.tmu.FingerprintCollector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50FF57592F15C3FD00A96798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FingerprintCollector/Preview Content\"";
+				DEVELOPMENT_TEAM = 9STJAB52XN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses location to detect nearby beacons for indoor positioning.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.tmu.FingerprintCollector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		50FF575B2F15C3FD00A96798 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.tmu.FingerprintCollectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FingerprintCollector.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FingerprintCollector";
+			};
+			name = Debug;
+		};
+		50FF575C2F15C3FD00A96798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.tmu.FingerprintCollectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FingerprintCollector.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FingerprintCollector";
+			};
+			name = Release;
+		};
+		50FF575E2F15C3FD00A96798 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.tmu.FingerprintCollectorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FingerprintCollector;
+			};
+			name = Debug;
+		};
+		50FF575F2F15C3FD00A96798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.tmu.FingerprintCollectorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FingerprintCollector;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50FF572E2F15C3F800A96798 /* Build configuration list for PBXProject "FingerprintCollector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50FF57552F15C3FD00A96798 /* Debug */,
+				50FF57562F15C3FD00A96798 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50FF57572F15C3FD00A96798 /* Build configuration list for PBXNativeTarget "FingerprintCollector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50FF57582F15C3FD00A96798 /* Debug */,
+				50FF57592F15C3FD00A96798 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50FF575A2F15C3FD00A96798 /* Build configuration list for PBXNativeTarget "FingerprintCollectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50FF575B2F15C3FD00A96798 /* Debug */,
+				50FF575C2F15C3FD00A96798 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50FF575D2F15C3FD00A96798 /* Build configuration list for PBXNativeTarget "FingerprintCollectorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50FF575E2F15C3FD00A96798 /* Debug */,
+				50FF575F2F15C3FD00A96798 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50FF572B2F15C3F800A96798 /* Project object */;
+}

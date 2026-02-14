@@ -438,8 +438,8 @@
 				DEVELOPMENT_TEAM = 9STJAB52XN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to detect nearby beacon signals for indoor positioning.\nThis app uses Bluetooth to detect nearby beacon signals for indoor positioning.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses location access to detect nearby Bluetooth beacons for indoor positioning.\nThis app uses location access to detect nearby Bluetooth beacons for indoor positioning.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -469,8 +469,8 @@
 				DEVELOPMENT_TEAM = 9STJAB52XN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to detect nearby beacon signals for indoor positioning.\nThis app uses Bluetooth to detect nearby beacon signals for indoor positioning.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses location access to detect nearby Bluetooth beacons for indoor positioning.\nThis app uses location access to detect nearby Bluetooth beacons for indoor positioning.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
